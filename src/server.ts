@@ -2,13 +2,15 @@ import 'reflect-metadata';
 import * as tq from 'type-graphql';
 import { ApolloServer } from 'apollo-server';
 import { GraphQLScalarType } from 'graphql';
-import { DateTimeResolver } from 'graphql-scalars'
+import { DateTimeResolver } from 'graphql-scalars';
 
 import { context } from './config/context';
 
+import { resolvers } from './resolvers/index';
+
 const app = async () => {
     const schema = await tq.buildSchema({
-        resolvers: [],
+        resolvers,
         scalarsMap: [{ type: GraphQLScalarType, scalar: DateTimeResolver }]
     })
 
