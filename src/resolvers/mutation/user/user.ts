@@ -1,17 +1,7 @@
 import 'reflect-metadata';
 import { Resolver, Query, Ctx, InputType, Field, Mutation, Arg } from 'type-graphql';
 import { User } from '../../../db/entities';
-import { Context } from './../../../config/context';
-
-@InputType()
-class UserCreateInput {
-    @Field()
-    email: string;
-
-    @Field()
-    name: string;
-}
-
+import { Context } from '../../../config/context';
 @Resolver(User)
 export class UserMutation {
 

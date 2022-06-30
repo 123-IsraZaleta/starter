@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { ObjectType, Field, ID } from 'type-graphql';
 import { User } from './User';
+import { Reaction } from './Reaction';
 
 @ObjectType()
 export class Post {
@@ -16,8 +17,11 @@ export class Post {
     @Field()
     published: boolean
 
+    @Field((type) => User)
+    autor: User
+
     @Field()
-    viewCount: number
+    authorId: string
 
     @Field((type) => Date)
     createdAt: Date
@@ -25,6 +29,10 @@ export class Post {
     @Field((type) => Date)
     updatedAt: Date
 
-    @Field((type) => User)
-    author: User
+    @Field((type) => Reaction)
+    reactions: Reaction
+
+    @Field((type)=> Comment)
+    comments: Comment
+    
 }
